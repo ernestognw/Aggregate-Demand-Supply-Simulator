@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Simulador Macroeconómico</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+  <body>
+
+		<div class="container">
+      <h1>Aggregate Supply/Demand Simulator</h1>
+        <div class="chart-container">
+          <canvas id="myChart" width="400" height="400" ></canvas>
+        </div>
+
+      <div class="row">
+
+        <div class="col-sm-6 col-lg-2">
+          <div class="input-group mb-3 number-spinner">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-sm">GDP=</span>
+            </div>
+            <input id="GDPDisplay" type="text" class="form-control" value="10">
+          </div>
+        </div>
+
+				<div class="col-sm-6 col-lg-2">
+          <div id="Consumption" class="input-group mb-3 number-spinner">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-sm">C</span>
+            </div>
+            <input type="text" class="form-control" value="10">
+            <div class="input-group-btn-vertical">
+              <button class="btn btn-success" type="button" data-dir="up"></button>
+              <button class="btn btn-danger" type="button" data-dir="dwn"></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-2">
+          <div id="Investment" class="input-group mb-3 number-spinner">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-sm">+I</span>
+            </div>
+            <input type="text" class="form-control" value="10">
+            <div class="input-group-btn-vertical">
+              <button class="btn btn-success" type="button" data-dir="up"></button>
+              <button class="btn btn-danger" type="button" data-dir="dwn"></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-2">
+          <div id="GExpenditures" class="input-group mb-3 number-spinner">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-sm">+GE</span>
+            </div>
+            <input type="text" class="form-control" value="10">
+            <div class="input-group-btn-vertical">
+              <button class="btn btn-success" type="button" data-dir="up"></button>
+              <button class="btn btn-danger" type="button" data-dir="dwn"></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-2">
+          <div id="Imports" class="input-group mb-3 number-spinner">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-sm">-Im</span>
+            </div>
+            <input type="text" class="form-control" value="10">
+            <div class="input-group-btn-vertical">
+              <button class="btn btn-success" type="button" data-dir="up"></button>
+              <button class="btn btn-danger" type="button" data-dir="dwn"></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-2">
+          <div id="Exports" class="input-group mb-3 number-spinner">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-sm">+Ex</span>
+            </div>
+            <input type="text" class="form-control" value="10">
+            <div class="input-group-btn-vertical">
+              <button class="btn btn-success" type="button" data-dir="up"></button>
+              <button class="btn btn-danger" type="button" data-dir="dwn"></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-2">
+          <div class="input-group mb-3 number-spinner">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-sm">LAS=</span>
+            </div>
+            <input id="LASDisplay" type="text" class="form-control" value="10">
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-2">
+          <div id="Technology" class="input-group mb-3 number-spinner">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-sm">A</span>
+            </div>
+            <input type="text" class="form-control" value="2">
+            <div class="input-group-btn-vertical">
+              <button class="btn btn-success" type="button" data-dir="up"></button>
+              <button class="btn btn-danger" type="button" data-dir="dwn"></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-2">
+          <div id="Labour" class="input-group mb-3 number-spinner">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-sm">(L</span>
+            </div>
+            <input type="text" class="form-control" value="10">
+            <div class="input-group-btn-vertical">
+              <button class="btn btn-success" type="button" data-dir="up"></button>
+              <button class="btn btn-danger" type="button" data-dir="dwn"></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-2">
+          <div id="Capital" class="input-group mb-3 number-spinner">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-sm">K)</span>
+            </div>
+            <input type="text" class="form-control" value="10">
+            <div class="input-group-btn-vertical">
+              <button class="btn btn-success" type="button" data-dir="up"></button>
+              <button class="btn btn-danger" type="button" data-dir="dwn"></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-6">
+            <button id="update" class="btn btn-primary" type="button" data-dir="up">Update Aggregate Supply</button>
+        </div>
+
+			</div> <!-- end row -->
+		</div> <!-- end container -->
+
+    <div class="contenedor productos mediano"></div>
+
+
+		  <script src="jquery-3.3.1.min.js"></script>
+		  <script src="bootstrap.min.js"></script>
+      <script src="Chart.js"></script>
+      <script src="dibujo.js"></script>
+  </body>
+</html>
